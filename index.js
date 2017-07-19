@@ -21,3 +21,27 @@ const zebraStripes = [
   { width: 0.59, color: null },
   { width: 7.31, color: null }
 ];
+
+
+let sortedRobots = robots.map(function (robot) {
+  if (knownDecepticons.includes(robot.name)) {
+    return Object.assign({}, robot, {
+    name: robot[name],
+    alliance: 'decepticon',
+  })} else {
+    return Object.assign({}, robot, {
+    name: robot[name],
+    alliance: 'autobot',
+  })}});
+
+// This works with stripe.width, but not stripe[width]
+let coloredZebraStripes = zebraStripes.map(function (stripe, idx, zebraStripes) {
+  if (idx % 2 === 0) {
+    return Object.assign({}, stripe, {
+      width: stripe.width,
+      color: 'black',
+    })} else {
+    return Object.assign({}, stripe, {
+      width: stripe.width,
+      color: 'white',
+    })}});
